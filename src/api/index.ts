@@ -29,9 +29,19 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
+var corsOptions = {
+  origin: "http://localhost:3000",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
 const main = async () => {
   await server.start();
-  app.use("/api/graphql", cors(), bodyParser.json(), expressMiddleware(server));
+  app.use(
+    "/api/graphql",
+    cors(corsOptions),
+    bodyParser.json(),
+    expressMiddleware(server)
+  );
 };
 
 main();
