@@ -1,9 +1,3 @@
-import express from "express";
-
-const app = express();
-
-app.get("/api/test", (req, res) => {
-  res.end(`hello world`);
-});
+import app from "../src/api";
 
 export default app;
