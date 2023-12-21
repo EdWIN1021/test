@@ -31,7 +31,7 @@ const server = new ApolloServer({
 
 const main = async () => {
   await server.start();
-  app.use(cors(), bodyParser.json(), expressMiddleware(server));
+  app.use("/api/graphql", cors(), bodyParser.json(), expressMiddleware(server));
 };
 
 main();
