@@ -34,7 +34,7 @@ const main = async () => {
   app.use(
     "/api/graphql",
     cors<cors.CorsRequest>({
-      origin: ["http://localhost:3000", "https://test-pi-beige-63.vercel.app"],
+      origin: ["http://localhost:3000"],
     }),
     bodyParser.json(),
     expressMiddleware(server)
@@ -42,9 +42,5 @@ const main = async () => {
 };
 
 main();
-
-app.get("/api/test", (req, res) => {
-  res.end(`hello world1`);
-});
 
 export default app;
