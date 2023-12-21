@@ -29,16 +29,13 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
-var corsOptions = {
-  origin: "http://localhost:3000",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-
 const main = async () => {
   await server.start();
   app.use(
     "/api/graphql",
-    cors(corsOptions),
+    cors<cors.CorsRequest>({
+      origin: ["http://localhost:3000", "https://test-pi-beige-63.vercel.app"],
+    }),
     bodyParser.json(),
     expressMiddleware(server)
   );
