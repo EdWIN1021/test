@@ -6,7 +6,8 @@
   "author": "Edwin",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon server.ts"
+    "dev": "nodemon server.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "@apollo/server": "^4.9.5",
